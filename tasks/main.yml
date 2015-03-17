@@ -22,6 +22,7 @@
     enabled=yes
   when: ntp_enabled
 
+
 - name: Ensure NTP is stopped and disabled at system start.
   service: >
     name={{ ntp_daemon }}
