@@ -1,38 +1,46 @@
-Role Name
-=========
+# Ansible Role: server-time
 
-A brief description of the role goes here.
+[![Build Status](https://travis-ci.org/supercoder/ansible-role-server-time.svg?branch=master)](https://travis-ci.org/jongillies/ansible-role-server-time)
 
-Requirements
-------------
+Installs NTP on RedHat/CentOS and Debian/Ubuntu Linux servers.
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Requirements
 
-Role Variables
---------------
+None.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+## Role Variables
 
-Dependencies
-------------
+Available variables are listed below, along with default values (see `vars/main.yml`):
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+    ntp_enabled: true
 
-Example Playbook
-----------------
+Whether to start the ntpd service and enable it at system boot. On many virtual machines that run inside a container (like OpenVZ or VirtualBox), it's recommended you don't run the NTP daemon, since the host itself should be set to synchronize time for all it's child VMs.
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+    ntp_timezone: UTC
 
-    - hosts: servers
+Set the timezone for your server.
+
+
+## Dependencies
+
+None.
+
+## Example Playbook
+
+    - hosts: db-servers
+      vars_files:
+        - vars/main.yml
       roles:
-         - { role: username.rolename, x: 42 }
+        - { role: jongillies.server-time }
 
-License
--------
+*Inside `vars/main.yml`*:
 
-BSD
+    ntp_timezone: UTC
 
-Author Information
-------------------
+## License
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+MIT / BSD
+
+## Author Information
+
+This role is based on the role created in 2014 by [Jeff Geerling](http://jeffgeerling.com/), author of [Ansible for DevOps](http://ansiblefordevops.com/). [GitHub](https://github.com/geerlingguy/ansible-role-ntp)
