@@ -1,6 +1,6 @@
 # Ansible Role: server-time
 
-[![Build Status](https://travis-ci.org/supercoder/ansible-role-server-time.svg?branch=master)](https://travis-ci.org/jongillies/ansible-role-server-time)
+[![Build Status](https://travis-ci.org/jongillies/ansible-role-server-time.svg?branch=master)](https://travis-ci.org/jongillies/ansible-role-server-time)
 
 Installs NTP on RedHat/CentOS and Debian/Ubuntu Linux servers.
 
